@@ -15,4 +15,8 @@ export class RewardComponent implements OnInit {
   ngOnInit() {
   }
 
+  buy() {}
+  edit() {}
+  delete() {}
+
 }

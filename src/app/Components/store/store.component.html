@@ -1,8 +1,12 @@
 <div class="border border-primary rounded p-3">
     <p>store works!</p>
 
-    <div *ngFor="let item of rewards">
-        <app-reward [reward]="item"></app-reward>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let item of rewards" class="col-xs-6 m-2">
+                <app-reward [reward]="item"></app-reward>
+            </div>
+        </div>
     </div>
 </div>
 
