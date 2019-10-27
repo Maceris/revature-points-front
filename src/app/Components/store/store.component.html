@@ -1,12 +1,13 @@
 <div class="border border-primary rounded p-3">
-    <p>store works!</p>
+    <h2>Welcome to the Revature Points store!</h2>
 
     <div class="container">
         <div class="row">
-            <div *ngFor="let item of rewards" class="col-xs-6 m-2">
+            <div *ngFor="let item of rewards" class="col-xs-6 m-1">
                 <app-reward [reward]="item"></app-reward>
             </div>
         </div>
     </div>
+    <button type="button" id="createButton" class="btn btn-success" (click)="create()">Create</button>
 </div>
 

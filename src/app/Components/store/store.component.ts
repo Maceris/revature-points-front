@@ -21,6 +21,8 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
   }
 
+  create() {}
+
 
   
 
