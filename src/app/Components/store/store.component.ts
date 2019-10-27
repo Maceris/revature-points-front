@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
+  rewards = [{name: "Sample"}, {name: "Test"}, {name: "Example"}];
+
   constructor() { }
 
   ngOnInit() {
