@@ -1,5 +1,8 @@
-<p>store works!</p>
+<div class="border border-primary rounded p-3">
+    <p>store works!</p>
 
-<div *ngFor="let item of rewards">
-    <app-reward [name]="item.name"></app-reward>
+    <div *ngFor="let item of rewards">
+        <app-reward [reward]="item"></app-reward>
+    </div>
 </div>
+

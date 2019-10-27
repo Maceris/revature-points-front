@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Reward } from 'src/app/Models/reward';
 
 @Component({
   selector: 'app-store',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  rewards = [{name: "Sample"}, {name: "Test"}, {name: "Example"}];
+  rewards:Array<Reward> = [
+    new Reward(1, "Example 1", 100, 10),
+    new Reward(2, "Example 2", 1206, 4),
+    new Reward(3, "Adams favorite tie", 100000, 1)
+  ];
 
   constructor() { }
 

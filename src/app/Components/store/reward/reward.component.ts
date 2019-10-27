@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Reward } from 'src/app/Models/reward';
 
 @Component({
   selector: 'app-reward',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RewardComponent implements OnInit {
 
-  @Input() name: string = "Item";
+  @Input() reward: Reward = new Reward(0, "", 0, 0);
 
   constructor() { }
 
