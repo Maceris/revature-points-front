@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.loggedIn = true;
   }
 
 }
