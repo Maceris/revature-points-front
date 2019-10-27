@@ -10,6 +10,8 @@ import { RewardComponent } from './Components/store/reward/reward.component';
 import { AdjustmentsComponent } from './Components/adjustments/adjustments.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
