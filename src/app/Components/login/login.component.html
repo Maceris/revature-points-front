@@ -1,1 +1,26 @@
-<p>login works!</p>
+<form class="border border-primary rounded bg-light p-3" [formGroup]="loginForm">
+    <div id="alertDiv"></div>
+    <div class="form-group">
+        <label for="usernameField">Username</label>
+        <input type="text" class="form-control" id="usernameField" name="username" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <label for="passwordField">Password</label>
+        <input type="password" class="form-control" id="passwordField" name="password" placeholder="Password">
+    </div>
+    <form class="form-group" [formGroup]="radioGroupForm">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="model">
+            <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="associate"> Associate
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="trainer"> Trainer
+            </label>
+        </div>
+    </form>
+    <button type="button" id="loginButton" class="btn btn-primary">Login</button>
+</form>
+
+
+<hr>
+<pre>{{radioGroupForm.value['model']}}</pre>
