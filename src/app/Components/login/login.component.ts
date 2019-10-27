@@ -20,4 +20,8 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({});
   }
 
+  login() {
+    console.log("login would happen now.");
+  }
+
 }
