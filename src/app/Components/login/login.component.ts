@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public radioGroupForm: FormGroup;
+  public loginForm: FormGroup;
+  
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.radioGroupForm = this.formBuilder.group({
+      'model': 'associate'
+    });
+    this.loginForm = this.formBuilder.group({});
+  }
+
+  login() {
+    console.log("login would happen now.");
   }
 
 }

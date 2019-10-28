@@ -1,1 +1,20 @@
-<p>adjustments works!</p>
+<form class="border border-primary rounded bg-light p-3" [formGroup]="adjustForm">
+    <div id="alertDiv"></div>
+    <div class="form-group">
+        <label for="associateSelect">Select Associate</label>
+        <select class="form-control" id="associateSelect" (change)="selectChangeHandler($event)">
+            <option *ngFor="let associate of associates" [value]="associate.a_id">{{associate.f_name + " " + associate.l_name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="currentPointsField">Current points</label>
+        <input type="number" class="form-control" id="currentPointsField" name="currentPoints" value="{{curPoints}}" step="1" readonly>
+    </div>
+    <div class="form-group">
+        <label for="adjustmentField">Adjustment</label>
+        <input type="number" class="form-control" id="adjustmentField" name="adjustment" value="0" step="1">
+    </div>
+    
+    <button type="button" id="adjustButton" class="btn btn-primary">Adjust</button>
+    
+</form>

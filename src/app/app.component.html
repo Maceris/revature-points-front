@@ -1,6 +1,6 @@
-<div style="backgroung-color:black;">
-	<svg [attr.height]="h" [attr.width]="w">
-		<circle [attr.cx]="Cxo" [attr.cy]="Cyo" [attr.r]="Ro" fill="yellow" (click)="dragCrescent($event.target)"/>
-		<circle [attr.cx]="Cxi" [attr.cy]="Cyi" [attr.r]="Ri" fill="black" (click)="dragCrescent($event.target)"/>
-	</svg>
+<app-navbar></app-navbar>
+<div class="d-flex h-100">
+	<div class="row m-auto w-75 justify-content-center">
+		<router-outlet></router-outlet>
+	</div>
 </div>
