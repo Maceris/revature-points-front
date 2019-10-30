@@ -28,24 +28,27 @@ export class LoginComponent implements OnInit {
           Validators.required,
           Validators.maxLength(15),
           Validators.minLength(6)]))
-      // 'password': ['',[Validators.required, Validators.maxLength(15)]]
     });
   }
 
   onSubmit() {
     if (this.loginForm.invalid){
-      // this.loginForm.controls.password.errors.minlength
-      alert('error')
-    //} else if (this.radioGroupForm.model === 'associate') {
-    //  console.log('')
+      alert('error');
     } else {
-      console.log(this.radioGroupForm.model);
+      this.loginService.loginAssociate(
+        this.radioGroupForm.value.model,
+        new Login(
+          this.loginForm.value.username,
+          this.loginForm.value.password)
+        ).subscribe(
+          (response:any) => {
+            if (response.error){
+              console.log('Error');
+            } else {
+              navigateByUrl
+              console.log(response);
+            }
+          });
     }
-    
-    //this.loginService.loginAssociate(new Login(this.loginForm.value.username,this.loginForm.value.password))
-    //.subscribe((response:any)=>{
-    //    console.log(response);
-    //  });
   }
-
 }
