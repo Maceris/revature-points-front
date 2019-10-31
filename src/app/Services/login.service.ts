@@ -8,10 +8,11 @@ import { Login } from '../Models/login';
 export class LoginService {
   constructor(private http:HttpClient) { }
   //  httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
-  loginAssociate(level,user:Login){
+  loginAssociate(level:string,user:Login){
     return this.http.post<any>(
       `http://localhost:8080/${level}s/login`,
       user,
+      // httpOptions =
       { headers: new HttpHeaders({
           'Access-Control-Allow-Origin': 'http://localhost:4200', // -->Add this line
           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',

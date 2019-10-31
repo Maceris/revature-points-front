@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../Models/Login';
 import { LoginService } from '../../Services/login.service';
-
+import { StateService } from '../../Services/state.service';
+import { Router,ActivatedRoute,ParamMap } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,9 +15,12 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private loginService: LoginService) { }
-
+              private router:Router,
+              private loginService: LoginService,
+              private stateService: StateService) { }
+  
   ngOnInit() {
+    console.dir(this.router);
     this.radioGroupForm = this.formBuilder.group({
       'model': 'associate'
     });
@@ -45,8 +49,8 @@ export class LoginComponent implements OnInit {
             if (response.error){
               console.log('Error');
             } else {
-              navigateByUrl
-              console.log(response);
+              this.stateService.userSubject.next(this.radioGroupForm.value.model);
+              this.router.navigate(['/dashboard']);
             }
           });
     }

@@ -4,17 +4,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav" id="navItems">
-            <li class="nav-item" [routerLinkActive]="['active']">
+            <li class="nav-item" *ngIf="!loggedIn" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
             <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['dashboard']">Dashboard</a>
             </li>
-            <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['active']">
+            <li class="nav-item" *ngIf="loggedIn&&trainer" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['adjustments']">Adjustments</a>
             </li>
             <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['store']">Store</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedIn">
+              <a class="nav-link" href="#" (click)="logout()">Log out</a>
             </li>
         </ul>
     </div>
