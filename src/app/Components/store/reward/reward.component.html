@@ -2,9 +2,11 @@
     <p>Name: <b id="rewardName{{reward.r_id}}">{{reward.name}}</b></p>
     <p>Price: <b id="rewardPrice{{reward.r_id}}">{{reward.price}}</b></p>
     <p>Stock: <b id="rewardStock{{reward.r_id}}">{{reward.stock}}</b></p>
-    <div>
-        <button type="button" id="buyButton{{reward.r_id}}" class="btn btn-primary" (click)="buy()">Buy</button>
-        <button type="button" id="editButton{{reward.r_id}}" class="btn btn-warning m-1" (click)="edit()">Edit</button>
-        <button type="button" id="deleteButton{{reward.r_id}}" class="btn btn-danger" (click)="delete()">Delete</button>
+    <div class="btn-group">
+        <button *ngIf="!trainer" type="button" id="buyButton{{reward.r_id}}" class="btn btn-primary" (click)="buy()">Buy</button>
+        <span *ngIf="trainer">
+          <button type="button" id="editButton{{reward.r_id}}" class="btn btn-warning m-1" (click)="edit()">Edit</button>
+          <button type="button" id="deleteButton{{reward.r_id}}" class="btn btn-danger" (click)="delete()">Delete</button>
+        </span>
     </div>
 </div>

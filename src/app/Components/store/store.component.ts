@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reward } from 'src/app/Models/reward';
+import { RewardService } from './Services/reward.service';
+import { AuthService } from '../../Services/auth.service';
+              
 
 @Component({
   selector: 'app-store',
@@ -7,18 +10,28 @@ import { Reward } from 'src/app/Models/reward';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-
-  rewards:Array<Reward> = [
-    new Reward(1, "Example 1", 100, 10),
-    new Reward(2, "Example 2", 1206, 4),
-    new Reward(3, "Adams favorite tie", 100000, 1),
-    new Reward(4, "A new car", 75, 2),
-    new Reward(5, "Arby's", 2, 56)
-  ];
-
-  constructor() { }
+  page = 0;
+  rewards:any = [];
+  // page 
+  constructor(private rewardService:RewardService,
+              private auth:AuthService) { }
 
   ngOnInit() {
+    this.rewardService.getRewards().subscribe(
+      (response:any) => {
+        this.rewards = response.reduce((acc,el)=>{
+          const last = acc.length-1;
+          if (acc[last].length===15){
+            acc.push([el]);
+          } else {
+            acc[last].push(el);
+          }
+          return acc;
+        },[[]]);
+      });
+  }
+  pageChange(i):void{
+    this.page += i;
   }
 
   create() {}

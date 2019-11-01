@@ -9,8 +9,9 @@ import { StoreComponent } from './Components/store/store.component';
 import { RewardComponent } from './Components/store/reward/reward.component';
 import { AdjustmentsComponent } from './Components/adjustments/adjustments.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
-
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TrainerCanActivateGuard } from './Guards/trainer-can-activate.guard';
+import { AssociateCanActivateGuard } from './Guards/associate-can-activate.guard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -32,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [TrainerCanActivateGuard,AssociateCanActivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

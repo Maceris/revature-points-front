@@ -9,6 +9,7 @@ import { Reward } from 'src/app/Models/reward';
 export class RewardComponent implements OnInit {
 
   @Input() reward: Reward = new Reward(0, "", 0, 0);
+  @Input() trainer: boolean = false;
 
   constructor() { }
 
