@@ -23,12 +23,12 @@ export class RewardService {
   
   getRewards(){
     return this.http.get(
-      'http://localhost:8080/rewards',
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',
       this.headers)
   }
   postPurchase(r_id){
     return this.http.post(
-      'http://localhost:8080/purchases',
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases',
       {p_id:0, a_id:this.auth.id, p_time:new Date(), r_id:r_id},
       this.headers
     )
