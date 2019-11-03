@@ -29,29 +29,29 @@ export class RewardService {
       'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',
       this.headers)
   }
-  postPurchase(r_id){
+  postPurchase(rewardId){
     return this.http.post(
       'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases',
-      {p_id:0, a_id:this.auth.id, p_time:new Date(), r_id:r_id},
+      {purchaseId:0, associateId:this.auth.id, time:new Date(), rewardId:rewardId},
       this.headers
     )
   }
 //  post & put in same function
-  postReward(method,r_id,name,price,stock){
+  postReward(method,rewardId,name,price,stock){
     if (method==='add'){
       return this.http.post(
         'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',
-        {r_id:r_id,name:name,price:price,stock:stock});
+        {rewardId:rewardId,name:name,price:price,stock:stock});
     } else {
       return this.http.put(
-      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards/'+r_id,
-      {r_id:r_id,name:name,price:price,stock:stock},
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards/'+rewardId,
+      {rewardId:rewardId,name:name,price:price,stock:stock},
       this.headers);
     }
   }
-  deleteReward(r_id){
+  deleteReward(rewardId){
     return this.http.delete(
-      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases',
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases/'+rewardId,
       this.headers)
   }
 }

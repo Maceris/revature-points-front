@@ -18,7 +18,7 @@ export class RewardComponent implements OnInit {
   }
 
   buyReward() {
-    this.rs.postPurchase(this.reward.r_id).subscribe(
+    this.rs.postPurchase(this.reward.rewardId).subscribe(
       (response:any) => {
         console.log(response);
         if (response.error) {
@@ -36,7 +36,7 @@ export class RewardComponent implements OnInit {
     this.rs.table.next(false);
   }
   deleteReward() {
-    this.rs.deleteReward(this.reward.r_id).subscribe(
+    this.rs.deleteReward(this.reward.rewardId).subscribe(
       (response:any) => {
         console.log(response);
         if (response.error) {

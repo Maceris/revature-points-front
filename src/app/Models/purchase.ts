@@ -3,15 +3,15 @@ import { Reward } from './reward';
 
 export class Purchase {
     
-    p_id: number;
-    associate: Associate;
-    p_time: number;
-    reward: Reward;
+    purchaseId: number;
+    associateId: Associate;
+    time: number;
+    rewardId: Reward;
 
-    constructor(p_id:number, associate:Associate, p_time:number, reward:Reward) {
-        this.p_id = p_id;
-        this.associate = associate;
-        this.p_time = p_time;
-        this.reward = reward;
+    constructor(purchaseId:number, associateId:Associate, time:number, rewardId:Reward) {
+        this.purchaseId = purchaseId;
+        this.associateId = associateId;
+        this.time = time;
+        this.rewardId = rewardId;
     }
 }

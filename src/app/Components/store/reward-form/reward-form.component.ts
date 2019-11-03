@@ -12,7 +12,7 @@ export class RewardFormComponent implements OnInit {
   hide = true;
   button:string;
   reward:Reward;
-  r_id:number;
+  rewardId:number;
   showName = true;
   name:string;
   showPrice = true;
@@ -27,7 +27,7 @@ export class RewardFormComponent implements OnInit {
       ({formType,formContent}) => {
         console.log(formType,formContent);
         this.button = formType;
-        this.r_id = formContent.r_id;
+        this.rewardId = formContent.rewardId;
         this.name = formContent.name;
         this.price = formContent.price;
         this.stock = formContent.stock;
@@ -36,7 +36,7 @@ export class RewardFormComponent implements OnInit {
         this.showPrice = false;
         this.showStock = false;
         }
-        console.log(this.button, this.r_id, this.name, this.price, this.stock);
+        console.log(this.button, this.rewardId, this.name, this.price, this.stock);
       });
     this.rs.table.subscribe((hide:boolean) => {
       this.hide = hide;
@@ -59,7 +59,7 @@ export class RewardFormComponent implements OnInit {
     }
     this.rs.postReward(
       this.button,
-      this.r_id,
+      this.rewardId,
       this.name,
       this.price,
       this.stock).subscribe((resp) => {
