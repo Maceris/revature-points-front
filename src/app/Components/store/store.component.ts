@@ -11,16 +11,16 @@ import { AuthService } from '../../Services/auth.service';
 })
 export class StoreComponent implements OnInit {
   page = 0;
+  table = true;
   rewards:any = [];
-  // page 
-  constructor(private rewardService:RewardService,
+  showResults:boolean = true;
+  constructor(private rs:RewardService,
               private auth:AuthService) { }
-
-  ngOnInit() {
-    this.rewardService.getRewards().subscribe(
+  ngOnInit(){
+    this.rs.getRewards().subscribe(
       (response:any) => {
         this.rewards = response.reduce((acc,el)=>{
-          const last = acc.length-1;
+          const last = acc.length - 1;
           if (acc[last].length===15){
             acc.push([el]);
           } else {
@@ -29,14 +29,15 @@ export class StoreComponent implements OnInit {
           return acc;
         },[[]]);
       });
+    this.rs.table.subscribe((table:boolean) => {
+      this.table = table;
+    })
   }
   pageChange(i):void{
     this.page += i;
   }
-
-  create() {}
-
-
-  
-
+  create():void{
+    this.rs.formSubject.next({formType: 'add', formContent: new Reward(0, '', 0, 0)});
+    this.rs.table.next(false);
+  }
 }

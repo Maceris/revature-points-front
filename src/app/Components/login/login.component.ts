@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
       'model': 'associate'
     });
     this.loginForm = new FormGroup({
-      'username': new FormControl('', Validators.compose([Validators.required, Validators.maxLength(15)])),
+      'username': new FormControl('', Validators.compose([Validators.required, Validators.maxLength(200)])),
       'password': new FormControl(
         '',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(15),
+          Validators.maxLength(200),
           Validators.minLength(6)]))
     });
   }
