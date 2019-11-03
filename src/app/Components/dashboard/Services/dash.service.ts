@@ -21,7 +21,6 @@ export class DashService {
       })
     }
     getUser() {
-      console.log(this.user)
       return this.http.get<Associate>(
       'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/associates/'+this.user.id,
       this.headers);
