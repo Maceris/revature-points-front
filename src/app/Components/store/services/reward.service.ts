@@ -40,18 +40,18 @@ export class RewardService {
   postReward(method,r_id,name,price,stock){
     if (method==='add'){
       return this.http.post(
-        'http://localhost:8080/rewards',
+        'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',
         {r_id:r_id,name:name,price:price,stock:stock});
     } else {
       return this.http.put(
-      'http://localhost:8080/rewards/'+r_id,
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards/'+r_id,
       {r_id:r_id,name:name,price:price,stock:stock},
       this.headers);
     }
   }
   deleteReward(r_id){
     return this.http.delete(
-      'http://localhost:8080/purchases',
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases',
       this.headers)
   }
 }

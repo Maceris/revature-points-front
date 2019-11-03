@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<h1 *ngIf="! this.user.isTrainer()">Welcome {{this.associate.f_name}} {{this.associate.l_name}}</h1>
+<h2 *ngIf="! this.user.isTrainer()">You have {{this.associate.balance}} Revature Points</h2>
+
+<h1 *ngIf="this.user.isTrainer()">Welcome {{this.associate.f_name}} {{this.associate.l_name}}</h1>
