@@ -19,12 +19,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if (this.user.isTrainer()){
-      this.ds.getUser().subscribe((resp)=>{
-        this.associate = resp;
-      })
-    } else {
       this.ds.getTrainer().subscribe((resp)=>{
         this.trainer = resp;
+      })
+    } else {
+      this.ds.getUser().subscribe((resp)=>{
+        this.associate = resp;
       })
     }
     

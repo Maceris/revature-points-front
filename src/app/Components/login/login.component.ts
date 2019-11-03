@@ -48,10 +48,11 @@ export class LoginComponent implements OnInit {
             if (response.error){
               console.log('Error');
             } else {
+              console.log(response)
               if (this.radioGroupForm.value.model==='associate'){
-                this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.a_id});
+                this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.associateId});
               } else {
-              this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.t_id});
+              this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.trainerId});
               }
               this.router.navigate(['/dashboard']);
             }

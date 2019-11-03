@@ -38,7 +38,7 @@ export class AdjustmentsComponent implements OnInit {
   selectChangeHandler(event) {
     const selected_id:number = event.target.value;
     for (let i = 0 ; i < this.associates.length; i++) {
-      if (this.associates[i].a_id == selected_id) {
+      if (this.associates[i].associateId == selected_id) {
         this.currAssoc = this.associates[i];
         this.curPoints = this.associates[i].balance;
         break;
