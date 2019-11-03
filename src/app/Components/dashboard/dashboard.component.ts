@@ -25,7 +25,12 @@ export class DashboardComponent implements OnInit {
     } else {
       this.ds.getUser().subscribe((resp)=>{
         this.associate = resp;
-      })
+        // so the console shuts up about undefined variables
+        this.ds.getTrainerById(resp.trainerId).subscribe((resp)=>{
+          this.trainer = resp;
+        });
+      });
+      
     }
     
   }

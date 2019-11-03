@@ -30,4 +30,9 @@ export class DashService {
         'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/trainers/'+this.user.id,
         this.headers);
     }
+    getTrainerById(id : number) {
+      return this.http.get<Trainer>(
+        'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/trainers/'+id,
+        this.headers);
+    }
 }
