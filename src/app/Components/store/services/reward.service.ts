@@ -37,13 +37,13 @@ export class RewardService {
     )
   }
   postReward(method,r_id,name,price,stock){
-    if (method==='post'){
+    if (method==='add'){
       return this.http.post(
-      'http://localhost:8080/rewards',
-      {r_id:r_id,name:name,price:price,stock:stock});
+        'http://localhost:8080/rewards',
+        {r_id:r_id,name:name,price:price,stock:stock});
     } else {
       return this.http.put(
-      'http://localhost:8080/rewards',
+      'http://localhost:8080/rewards/'+r_id,
       {r_id:r_id,name:name,price:price,stock:stock});
     }
   }
