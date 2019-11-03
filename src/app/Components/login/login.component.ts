@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
               private authService:AuthService) { }
   
   ngOnInit() {
-    console.dir(this.router);
     this.radioGroupForm = this.formBuilder.group({
       'model': 'associate'
     });
@@ -49,7 +48,11 @@ export class LoginComponent implements OnInit {
             if (response.error){
               console.log('Error');
             } else {
-              this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.a_id});
+              if (this.radioGroupForm.value.model==='associate'){
+                this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.a_id});
+              } else {
+              this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.t_id});
+              }
               this.router.navigate(['/dashboard']);
             }
           });

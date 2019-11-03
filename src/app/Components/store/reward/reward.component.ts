@@ -35,6 +35,16 @@ export class RewardComponent implements OnInit {
       });
     this.rs.table.next(false);
   }
-  deleteReward() {}
+  deleteReward() {
+    this.rs.deleteReward(this.reward.r_id).subscribe(
+      (response:any) => {
+        console.log(response);
+        if (response.error) {
+          alert('transaction failed');
+        } else {
+          this.bgColor = "grey";
+        }
+      });
+  }
 
 }
