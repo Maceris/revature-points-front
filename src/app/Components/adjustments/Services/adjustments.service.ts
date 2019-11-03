@@ -27,7 +27,7 @@ export class AdjustmentsService {
   
   adjustPoints(associate){
     return this.http.put<any>(
-      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/associates/'+associate.a_id,
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/associates/'+associate.associateId,
       associate,
       this.headers);
   }

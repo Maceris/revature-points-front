@@ -15,7 +15,6 @@ export class AdjustmentsComponent implements OnInit {
   currAssoc:Associate;
   curPoints: number = 0;
 
-  private testTrainer: Trainer = new Trainer(1, "t-Rainer", "adam", "Adam", "Raneri");
   associates: Array<Associate> = [];
 
   constructor(private formBuilder: FormBuilder,
@@ -25,7 +24,7 @@ export class AdjustmentsComponent implements OnInit {
     this.as.getAllMyStudents().subscribe((resp)=>{
       if (!resp.error){
         resp.forEach((student)=>{
-          this.associates.push(new Associate(student.a_id, student.username, '', student.balance, student.f_name, student.l_name, null))
+          this.associates.push(new Associate(student.associateId, student.username, '', student.balance, student.fname, student.lname, null))
         })
       }
     })
