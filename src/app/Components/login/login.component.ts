@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
             if (response.error){
               console.log('Error');
             } else {
-              console.log(response)
               if (this.radioGroupForm.value.model==='associate'){
                 this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.associateId});
               } else {
