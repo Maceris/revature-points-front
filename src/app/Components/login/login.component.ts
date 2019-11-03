@@ -20,17 +20,16 @@ export class LoginComponent implements OnInit {
               private authService:AuthService) { }
   
   ngOnInit() {
-    console.dir(this.router);
     this.radioGroupForm = this.formBuilder.group({
       'model': 'associate'
     });
     this.loginForm = new FormGroup({
-      'username': new FormControl('', Validators.compose([Validators.required, Validators.maxLength(15)])),
+      'username': new FormControl('', Validators.compose([Validators.required, Validators.maxLength(200)])),
       'password': new FormControl(
         '',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(15),
+          Validators.maxLength(200),
           Validators.minLength(6)]))
     });
   }
@@ -49,7 +48,11 @@ export class LoginComponent implements OnInit {
             if (response.error){
               console.log('Error');
             } else {
-              this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.a_id});
+              if (this.radioGroupForm.value.model==='associate'){
+                this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.a_id});
+              } else {
+              this.authService.userSubject.next({position:this.radioGroupForm.value.model,id:response.t_id});
+              }
               this.router.navigate(['/dashboard']);
             }
           });

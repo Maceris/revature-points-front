@@ -1,19 +1,29 @@
 <div class="border border-primary rounded p-3">
-  <h2>Welcome to the Revature Points store!</h2>
-  <div class="btn-group">
-    <button class="btn-xs btn-default" *ngIf="page>0" (click)="pageChange(-1)">Previous</button>
-    <button class="btn-xs btn-default" *ngIf="page<(rewards.length-1)" (click)="pageChange(1)">Next</button>
-  </div>
-  <div class="container">
-    <div class="row" *ngIf="rewards.length > 0">
-      <div *ngFor="let item of rewards[page]" class="col-xs-6 m-1">
-        <app-reward [reward]="item" [trainer]="auth.trainer"></app-reward>
+  <app-reward-form></app-reward-form>
+  <div class="container" *ngIf="table">
+    <h2>Welcome to the Revature Points store!</h2>
+    <div class="row">
+      <button type="button" id="createButton" class="btn-xl btn-success" (click)="create()">Post new product</button>
+      <div class="btn-group" style="float:right">
+        <button class="btn-xs btn-default" *ngIf="page>0" (click)="pageChange(-1)">Previous</button>
+        <button class="btn-xs btn-default" *ngIf="page<(rewards.length-1)" (click)="pageChange(1)">Next</button>
+      </div>
+    </div>
+    <div style="display:flex;">
+      <div style="flex:1;"></div>
+      <div>
+        <div class="row" *ngFor="let item of rewards[page]">
+          <app-reward [reward]="item" [trainer]="auth.trainer"></app-reward>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+    </div>
+    <div class="row">
+      <button type="button" id="createButton" class="btn-xl btn-success" (click)="create()">Post new product</button>
+      <div class="btn-group" style="float:right">
+        <button class="btn-xs btn-default" *ngIf="page>0" (click)="pageChange(-1)">Previous</button>
+        <button class="btn-xs btn-default" *ngIf="page<(rewards.length-1)" (click)="pageChange(1)">Next</button>
       </div>
     </div>
   </div>
-  <div class="btn-group">
-    <button class="btn-xs btn-default" *ngIf="page>0" (click)="pageChange(-1)">Previous</button>
-    <button class="btn-xs btn-default" *ngIf="page<(rewards.length-1)" (click)="pageChange(1)">Next</button>
-  </div>
-  <button type="button" id="createButton" class="btn-xl btn-success" (click)="create()">Create</button>
 </div>

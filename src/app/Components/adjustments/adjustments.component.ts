@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Associate } from 'src/app/Models/associate';
-import { Trainer } from 'src/app/Models/trainer';
+import { FormGroup,  FormControl, FormBuilder} from '@angular/forms';
+import { AdjustmentsService } from './Services/adjustments.service';
+import { Associate } from '../../Models/associate';
+import { Trainer } from '../../Models/trainer';
 
 @Component({
   selector: 'app-adjustments',
@@ -11,23 +12,24 @@ import { Trainer } from 'src/app/Models/trainer';
 export class AdjustmentsComponent implements OnInit {
 
   public adjustForm: FormGroup;
-
+  currAssoc:Associate;
   curPoints: number = 0;
 
   private testTrainer: Trainer = new Trainer(1, "t-Rainer", "adam", "Adam", "Raneri");
-  associates: Array<Associate> = [
-    new Associate(1, "user1", "password", 100, "John", "Doe", this.testTrainer),
-    new Associate(2, "user2", "password", 10000, "Kevin", "Smith", this.testTrainer),
-    new Associate(3, "user3", "password", 70, "Mike", "Hammer", this.testTrainer),
-    new Associate(4, "user4", "password", 2, "Brian", "Serrano", this.testTrainer),
-    new Associate(5, "user5", "password", 50002, "Alan", "Turing", this.testTrainer),
-    new Associate(6, "user6", "password", 12345, "Joe", "Blow", this.testTrainer)
-  ];
+  associates: Array<Associate> = [];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private as:AdjustmentsService) { }
 
   ngOnInit() {
-    this.adjustForm = this.formBuilder.group({});
+    this.as.getAllMyStudents().subscribe((resp)=>{
+      if (!resp.error){
+        resp.forEach((student)=>{
+          this.associates.push(new Associate(student.a_id, student.username, '', student.balance, student.f_name, student.l_name, null))
+        })
+      }
+    })
+    this.adjustForm = new FormGroup({adjustment:new FormControl(0)});
     if (this.associates.length > 0) {
       this.curPoints = this.associates[0].balance;
     }
@@ -37,10 +39,16 @@ export class AdjustmentsComponent implements OnInit {
     const selected_id:number = event.target.value;
     for (let i = 0 ; i < this.associates.length; i++) {
       if (this.associates[i].a_id == selected_id) {
+        this.currAssoc = this.associates[i];
         this.curPoints = this.associates[i].balance;
         break;
       }
     }
+  }
+  
+  adjust(){
+    this.currAssoc.balance += this.adjustForm.value.adjustment;
+    this.as.adjustPoints(this.currAssoc)
   }
 
 }

@@ -1,0 +1,15 @@
+<div class="form-group" *ngIf="!hide">
+  <h3 *ngIf="!showName">{{name}} <button href="#" (click)="updateName()">edit</button></h3>
+  <label *ngIf="showName" class="form-control">Name:
+    <input [(ngModel)]="name" type="text" required />
+  </label>
+  <h3 *ngIf="!showPrice">{{price}} <button href="#" (click)="updatePrice()">edit</button></h3>
+  <label *ngIf="showPrice" class="form-control">Price:
+    <input [(ngModel)]="price" type="number" step="1" min="1" required />
+  </label>
+  <h3 *ngIf="!showStock">{{stock}} <button href="#" (click)="updateStock()">edit</button></h3>
+  <label *ngIf="showStock" class="form-control">Stock:
+    <input [(ngModel)]="stock" type="number" step="1" min="1" required />
+  </label>
+  <button (click)="submit()">{{button}}</button>
+</div>
