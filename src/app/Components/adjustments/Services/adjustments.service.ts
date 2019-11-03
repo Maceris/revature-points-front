@@ -20,7 +20,6 @@ export class AdjustmentsService {
         })
       }
   getAllMyStudents(){
-    console.log(this.user);
     return this.http.get<any>(
       'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/associates?t_id='+this.user.id,
       this.headers);
