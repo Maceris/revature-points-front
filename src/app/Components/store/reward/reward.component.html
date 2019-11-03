@@ -1,10 +1,19 @@
-<div class="border border-primary rounded p-3">
-    <p>Name: <b id="rewardName{{reward.r_id}}">{{reward.name}}</b></p>
-    <p>Price: <b id="rewardPrice{{reward.r_id}}">{{reward.price}}</b></p>
-    <p>Stock: <b id="rewardStock{{reward.r_id}}">{{reward.stock}}</b></p>
-    <div>
-        <button type="button" id="buyButton{{reward.r_id}}" class="btn btn-primary" (click)="buy()">Buy</button>
-        <button type="button" id="editButton{{reward.r_id}}" class="btn btn-warning m-1" (click)="edit()">Edit</button>
-        <button type="button" id="deleteButton{{reward.r_id}}" class="btn btn-danger" (click)="delete()">Delete</button>
-    </div>
+<div style="float:right">
+  <table class="table">
+    <tr><th>Name</th><th>Price</th><th>Stock</th><th>Actions</th></tr>
+    <tr style="background:{{bgColor}};">
+      <td>{{reward.name}}</td>
+      <td>${{reward.price}}</td>
+      <td>{{reward.stock}} units</td>
+      <td>
+        <span class="btn-group">
+          <button *ngIf="!trainer" type="button" id="buyButton{{reward.r_id}}" class="btn btn-primary" (click)="buyReward()">Buy</button>
+          <span *ngIf="trainer" class="btn-group">
+            <button type="button" id="editButton{{reward.r_id}}" class="btn btn-warning m-1" (click)="editReward()">Edit</button>
+            <button type="button" id="deleteButton{{reward.r_id}}" class="btn btn-danger m-1" (click)="deleteReward()">Delete</button>
+          </span>
+        </span>
+      </td>
+    </tr>
+  </table>
 </div>

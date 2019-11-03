@@ -4,13 +4,14 @@ import { LoginComponent } from './Components/login/login.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { AdjustmentsComponent } from './Components/adjustments/adjustments.component';
 import { StoreComponent } from './Components/store/store.component';
-
+import { TrainerCanActivateGuard } from './Guards/trainer-can-activate.guard';
+import { AssociateCanActivateGuard } from './Guards/associate-can-activate.guard';
 
 const routes: Routes = [
   {path: "login", component:LoginComponent},
-  {path: "dashboard", component:DashboardComponent},
-  {path: "adjustments", component:AdjustmentsComponent},
-  {path: "store", component:StoreComponent},
+  {path: "dashboard", component:DashboardComponent, canActivate: [AssociateCanActivateGuard]},
+  {path: "adjustments", component:AdjustmentsComponent, canActivate: [TrainerCanActivateGuard]},
+  {path: "store", component:StoreComponent, canActivate: [AssociateCanActivateGuard]},
   {path: "**", component:LoginComponent}
 ];
 

@@ -1,7 +1,7 @@
 import { Trainer } from './trainer';
 
 export class Associate {
-    
+
     a_id: number;
     username: string;
     password: string;
