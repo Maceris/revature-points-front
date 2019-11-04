@@ -34,8 +34,8 @@ export class RewardComponent implements OnInit {
   buyReward() {
     if (!this.user.isTrainer()) {
       if (this.associate.balance < this.reward.price) {
-
         alert("Can't afford that, please try another.");
+        return;
       }
     }
     this.rs.postPurchase(this.reward.rewardId).subscribe(
