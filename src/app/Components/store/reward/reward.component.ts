@@ -25,7 +25,6 @@ export class RewardComponent implements OnInit {
     if (!this.user.isTrainer()) {
       this.rs.getAssociate().subscribe((resp:Associate)=>{
         this.associate = resp;
-        console.log(this.associate.balance >= this.reward.price)
         this.isPurchaseable = this.associate.balance >= this.reward.price;
       });
     }
