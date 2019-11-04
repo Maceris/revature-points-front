@@ -7,13 +7,13 @@
             <li class="nav-item" *ngIf="!user.authenticated" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
-            <li class="nav-item" *ngIf="user.authenticated" [routerLinkActive]="['active']">
+            <li class="nav-item" *ngIf="user.authenticated" [routerLinkActive]="['active']" id="dashboardButton">
                 <a class="nav-link" [routerLink]="['dashboard']">Dashboard</a>
             </li>
-            <li class="nav-item" *ngIf="user.authenticated && user.trainer" [routerLinkActive]="['active']">
+            <li class="nav-item" *ngIf="user.authenticated && user.trainer" [routerLinkActive]="['active']" id="adjustmentsButton">
                 <a class="nav-link" [routerLink]="['adjustments']">Adjustments</a>
             </li>
-            <li class="nav-item" *ngIf="user.authenticated" [routerLinkActive]="['active']">
+            <li class="nav-item" *ngIf="user.authenticated" [routerLinkActive]="['active']" id="storeButton">
                 <a class="nav-link" [routerLink]="['store']">Store</a>
             </li>
             <li class="nav-item" *ngIf="user.authenticated" id="logoutButton">
