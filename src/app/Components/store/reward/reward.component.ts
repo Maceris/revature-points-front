@@ -31,7 +31,6 @@ export class RewardComponent implements OnInit {
     }
   }
 
-
   buyReward() {
     if (!this.user.isTrainer()) {
       if (this.associate.balance < this.reward.price) {

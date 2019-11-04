@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Reward } from '../../../Models/Reward';
 import { RewardService } from '../Services/reward.service';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { StoreComponent } from '../store.component';
 
 @Component({
   selector: 'app-reward-form',
@@ -25,7 +27,6 @@ export class RewardFormComponent implements OnInit {
   ngOnInit() {
     this.rs.formSubject.subscribe(
       ({formType,formContent}) => {
-        console.log(formType,formContent);
         this.button = formType;
         this.rewardId = formContent.rewardId;
         this.name = formContent.name;
@@ -36,7 +37,6 @@ export class RewardFormComponent implements OnInit {
         this.showPrice = false;
         this.showStock = false;
         }
-        console.log(this.button, this.rewardId, this.name, this.price, this.stock);
       });
     this.rs.table.subscribe((hide:boolean) => {
       this.hide = hide;
@@ -63,7 +63,7 @@ export class RewardFormComponent implements OnInit {
       this.name,
       this.price,
       this.stock).subscribe((resp) => {
-          console.log(resp);
+          
         });
     this.rs.table.next(true);
   }

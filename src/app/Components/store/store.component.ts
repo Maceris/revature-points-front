@@ -12,7 +12,7 @@ import { AuthService } from '../../Services/auth.service';
 export class StoreComponent implements OnInit {
   page = 0;
   table = true;
-  rewards:any = [];
+  rewards:Array<Reward> = [];
   showResults:boolean = true;
   trainer:boolean = true;
   constructor(private rs:RewardService,
