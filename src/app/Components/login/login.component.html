@@ -3,12 +3,12 @@
     <div class="form-group">
         <label for="usernameField">Username</label>
         <!-- <div *ngIf="loginForm.controls.username.errors.required"> Username is a required field</div> -->
-        <input type="text" class="form-control" formControlName="username" placeholder="Username">
+        <input type="text" class="form-control" id="usernameField" formControlName="username" placeholder="Username">
     </div>
     <div class="form-group">
         <label for="passwordField">Password</label>
         <!-- <div *ngIf="loginForm.controls.password.errors.required"> Password is a required field</div> -->
-        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+        <input type="password" class="form-control" id="passwordField" formControlName="password" placeholder="Password">
     </div>
     <form class="form-group" [formGroup]="radioGroupForm">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="model">
