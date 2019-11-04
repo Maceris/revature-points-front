@@ -3,6 +3,7 @@ import { Reward } from 'src/app/Models/reward';
 import { RewardService } from '../Services/reward.service';
 import { Associate } from 'src/app/Models/associate';
 import { AuthService } from 'src/app/Services/auth.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-reward',
@@ -25,7 +26,7 @@ export class RewardComponent implements OnInit {
     if (!this.user.isTrainer()) {
       this.rs.getAssociate().subscribe((resp:Associate)=>{
         this.associate = resp;
-        this.isPurchaseable = this.associate.balance >= this.reward.price;
+        this.isPurchaseable = (this.associate.balance >= this.reward.price) && (this.reward.stock > 0);
       });
     }
   }
@@ -37,6 +38,10 @@ export class RewardComponent implements OnInit {
         alert("Can't afford that, please try another.");
         return;
       }
+      if (this.reward.stock <= 0){
+        alert("No items left to buy.");
+        return;
+      }
     }
     this.rs.postPurchase(this.reward.rewardId).subscribe(
       (response:any) => {
@@ -46,6 +51,7 @@ export class RewardComponent implements OnInit {
           this.bgColor = "grey";
         }
       });
+      this.reward.stock -= 1;
   }
   editReward() {
     this.rs.formSubject.next({
