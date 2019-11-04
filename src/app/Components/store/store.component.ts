@@ -12,7 +12,7 @@ import { AuthService } from '../../Services/auth.service';
 export class StoreComponent implements OnInit {
   page = 0;
   table = true;
-  rewards:Array<Reward> = [];
+  rewards:Array<Array<Reward>> = [];
   showResults:boolean = true;
   trainer:boolean = true;
   constructor(private rs:RewardService,
@@ -32,6 +32,27 @@ export class StoreComponent implements OnInit {
       });
     this.rs.table.subscribe((table:boolean) => {
       this.table = table;
+    })
+    this.rs.formSubmit.subscribe(({deletion,update,reward}) => {
+      if (deletion) {
+        this.rewards[this.page] = this.rewards[this.page].filter((el)=> {
+          return el.rewardId !== reward.rewardId;
+        });
+      } else if (update) {
+        let limit = this.rewards[this.page].length;
+        for (var i = 0; i < limit; i++){
+          if (this.rewards[this.page][i].rewardId===reward.rewardId){
+            this.rewards[this.page][i] = reward;
+            break;
+          }
+        }
+      } else {
+        if (this.rewards[this.rewards.length-1].length<15){
+          this.rewards[this.rewards.length-1].push(reward);
+        } else {
+          this.rewards.push([reward]);
+        }
+      }
     })
     this.trainer = this.auth.isTrainer();
   }
