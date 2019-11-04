@@ -62,12 +62,11 @@ export class RewardComponent implements OnInit {
   deleteReward() {
     this.rs.deleteReward(this.reward.rewardId).subscribe(
       (response:any) => {
-        console.log(response);
-        if (response.error) {
-          alert('transaction failed');
-        } else {
-          this.bgColor = "grey";
-        }
+        this.rs.formSubmit.next({
+          deletion:true,
+          update:false,
+          reward:this.reward
+        })
       });
   }
 

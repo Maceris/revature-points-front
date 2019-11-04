@@ -63,9 +63,16 @@ export class RewardFormComponent implements OnInit {
       this.name,
       this.price,
       this.stock).subscribe((resp) => {
-          
+          if ('rewardId' in resp) {
+            this.rs.formSubmit.next({
+              deletion:false,
+              update:this.button==='update',
+              reward:new Reward(resp.rewardId,this.name,this.price,this.stock)
+            })
+            this.rs.table.next(true);
+          }
         });
-    this.rs.table.next(true);
+    
   }
 
 }
