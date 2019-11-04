@@ -32,7 +32,7 @@ export class RewardService {
   postPurchase(rewardId){
     return this.http.post(
       'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases',
-      {purchaseId:0, associateId:this.auth.id, time:new Date(), rewardId:rewardId},
+      {purchaseId:0, associateId:this.auth.id, time:new Date().getTime(), rewardId:rewardId},
       this.headers
     )
   }
@@ -51,7 +51,7 @@ export class RewardService {
   }
   deleteReward(rewardId){
     return this.http.delete(
-      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases/'+rewardId,
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards/'+rewardId,
       this.headers)
   }
 }

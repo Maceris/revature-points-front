@@ -20,7 +20,6 @@ export class RewardComponent implements OnInit {
   buyReward() {
     this.rs.postPurchase(this.reward.rewardId).subscribe(
       (response:any) => {
-        console.log(response);
         if (response.error) {
           alert('transaction failed');
         } else {
