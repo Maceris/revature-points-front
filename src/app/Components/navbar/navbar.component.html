@@ -17,7 +17,7 @@
                 <a class="nav-link" [routerLink]="['store']">Store</a>
             </li>
             <li class="nav-item" *ngIf="user.authenticated">
-              <a class="nav-link" href="#" (click)="logout()">Log out</a>
+              <a class="nav-link" href="#" (click)="logout()" id="logout">Log out</a>
             </li>
         </ul>
     </div>
