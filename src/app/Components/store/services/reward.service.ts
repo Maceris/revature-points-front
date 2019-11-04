@@ -23,7 +23,14 @@ export class RewardService {
   table = new Subject();
   
   constructor(private http:HttpClient,
-              private auth:AuthService) { }
+              private auth:AuthService,
+              private user: AuthService) { }
+
+  getAssociate() {
+    return this.http.get(
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/associates/'+this.user.id,
+      this.headers)
+  }
   getRewards(){
     return this.http.get(
       'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',

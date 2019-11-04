@@ -3,7 +3,8 @@
     <p>Price: <b id="rewardPrice{{reward.r_id}}">{{reward.price}}</b></p>
     <p>Stock: <b id="rewardStock{{reward.r_id}}">{{reward.stock}}</b></p>
     <div>
-        <button *ngIf="!trainer" type="button" id="buyButton{{reward.rewardId}}" class="btn btn-primary" (click)="buyReward()">Buy</button>
+        <button *ngIf="isPurchasable && !trainer" type="button" id="buyButton{{reward.rewardId}}" class="btn btn-primary" (click)="buyReward()">Buy</button>
+        <button *ngIf="!trainer && !isPurchasable" type="button" id="buyButton{{reward.rewardId}}" class="btn btn-secondary" (click)="buyReward()">Buy</button>
         <button *ngIf="trainer" type="button" id="editButton{{reward.rewardId}}" class="btn btn-warning m-1" (click)="editReward()">Edit</button>
         <button *ngIf="trainer" type="button" id="deleteButton{{reward.rewardId}}" class="btn btn-danger m-1" (click)="deleteReward()">Delete</button>
     </div>
