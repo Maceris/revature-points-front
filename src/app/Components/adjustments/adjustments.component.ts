@@ -33,6 +33,7 @@ export class AdjustmentsComponent implements OnInit {
     this.adjustForm = new FormGroup({adjustment:new FormControl(0)});
     if (this.associates.length > 0) {
       this.curPoints = this.associates[0].balance;
+      this.currAssoc =  this.associates[0]
     }
   }
 
@@ -48,11 +49,14 @@ export class AdjustmentsComponent implements OnInit {
   }
   
   adjust(){
-    console.log(this.adjustForm.get('adjustment').value)
+    console.log('...')
+    console.log(this.adjustForm.get('adjustment').value);
+    console.log(this.currAssoc);
     this.currAssoc.balance += this.adjustForm.get('adjustment').value;
     this.as.adjustPoints(this.currAssoc).subscribe((resp)=>{
       console.log(resp);
     });
+    this.adjustForm.reset();
     this.curPoints = this.currAssoc.balance;
   }
 

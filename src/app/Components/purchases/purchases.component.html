@@ -1,0 +1,10 @@
+<div class="table-responsive">
+  <table class="table">
+    <tr><th> Name </th><th> Time </th><th> Price </th></tr>
+    <tr *ngFor="let purchase of purchases">
+      <td>{{purchase.name}}</td>
+      <td>{{purchase.time}}</td>
+      <td>{{purchase.price}} points</td>
+    </tr>
+  </table>
+</div>

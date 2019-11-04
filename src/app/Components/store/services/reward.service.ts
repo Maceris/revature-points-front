@@ -21,6 +21,7 @@ export class RewardService {
   }
   formSubject = new Subject();
   table = new Subject();
+  formSubmit = new Subject();
   
   constructor(private http:HttpClient,
               private auth:AuthService,

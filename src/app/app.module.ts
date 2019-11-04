@@ -22,6 +22,7 @@ import { AssociateCanActivateGuard } from './Guards/associate-can-activate.guard
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PurchasesComponent } from './Components/purchases/purchases.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     RewardComponent,
     AdjustmentsComponent,
     DashboardComponent,
-    RewardFormComponent
+    RewardFormComponent,
+    PurchasesComponent
   ],
   imports: [
     BrowserModule,
