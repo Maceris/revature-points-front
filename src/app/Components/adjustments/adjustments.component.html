@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="associateSelect">Select Associate</label>
         <select class="form-control" id="associateSelect" (change)="selectChangeHandler($event)">
-            <option *ngFor="let associate of associates" [value]="associate.a_id">{{associate.f_name + " " + associate.l_name}}</option>
+            <option *ngFor="let associate of associates" [value]="associate.associateId">{{associate.fname + " " + associate.lname}}</option>
         </select>
     </div>
     <div class="form-group">

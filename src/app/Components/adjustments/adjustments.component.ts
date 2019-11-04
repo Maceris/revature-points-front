@@ -3,6 +3,7 @@ import { FormGroup,  FormControl, FormBuilder} from '@angular/forms';
 import { AdjustmentsService } from './Services/adjustments.service';
 import { Associate } from '../../Models/associate';
 import { Trainer } from '../../Models/trainer';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-adjustments',
@@ -15,17 +16,17 @@ export class AdjustmentsComponent implements OnInit {
   currAssoc:Associate;
   curPoints: number = 0;
 
-  private testTrainer: Trainer = new Trainer(1, "t-Rainer", "adam", "Adam", "Raneri");
   associates: Array<Associate> = [];
 
   constructor(private formBuilder: FormBuilder,
-              private as:AdjustmentsService) { }
+              private as:AdjustmentsService,
+              private user: AuthService) { }
 
   ngOnInit() {
     this.as.getAllMyStudents().subscribe((resp)=>{
       if (!resp.error){
         resp.forEach((student)=>{
-          this.associates.push(new Associate(student.a_id, student.username, '', student.balance, student.f_name, student.l_name, null))
+          this.associates.push(new Associate(student.associateId, student.username, student.password, student.balance, student.fname, student.lname, this.user.id))
         })
       }
     })
@@ -38,7 +39,7 @@ export class AdjustmentsComponent implements OnInit {
   selectChangeHandler(event) {
     const selected_id:number = event.target.value;
     for (let i = 0 ; i < this.associates.length; i++) {
-      if (this.associates[i].a_id == selected_id) {
+      if (this.associates[i].associateId == selected_id) {
         this.currAssoc = this.associates[i];
         this.curPoints = this.associates[i].balance;
         break;
@@ -47,8 +48,12 @@ export class AdjustmentsComponent implements OnInit {
   }
   
   adjust(){
-    this.currAssoc.balance += this.adjustForm.value.adjustment;
-    this.as.adjustPoints(this.currAssoc)
+    console.log(this.adjustForm.get('adjustment').value)
+    this.currAssoc.balance += this.adjustForm.get('adjustment').value;
+    this.as.adjustPoints(this.currAssoc).subscribe((resp)=>{
+      console.log(resp);
+    });
+    this.curPoints = this.currAssoc.balance;
   }
 
 }

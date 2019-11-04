@@ -12,8 +12,9 @@ import { AuthService } from '../../Services/auth.service';
 export class StoreComponent implements OnInit {
   page = 0;
   table = true;
-  rewards:any = [];
+  rewards:Array<Reward> = [];
   showResults:boolean = true;
+  trainer:boolean = true;
   constructor(private rs:RewardService,
               private auth:AuthService) { }
   ngOnInit(){
@@ -32,6 +33,7 @@ export class StoreComponent implements OnInit {
     this.rs.table.subscribe((table:boolean) => {
       this.table = table;
     })
+    this.trainer = this.auth.isTrainer();
   }
   pageChange(i):void{
     this.page += i;

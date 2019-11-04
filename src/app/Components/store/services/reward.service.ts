@@ -23,35 +23,42 @@ export class RewardService {
   table = new Subject();
   
   constructor(private http:HttpClient,
-              private auth:AuthService) { }
-  getRewards(){
+              private auth:AuthService,
+              private user: AuthService) { }
+
+  getAssociate() {
     return this.http.get(
-      'http://localhost:8080/rewards',
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/associates/'+this.user.id,
       this.headers)
   }
-  postPurchase(r_id){
+  getRewards(){
+    return this.http.get(
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',
+      this.headers)
+  }
+  postPurchase(rewardId){
     return this.http.post(
-      'http://localhost:8080/purchases',
-      {p_id:0, a_id:this.auth.id, p_time:(new Date()).getTime(), r_id:r_id},
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/purchases',
+      {purchaseId:0, associateId:this.auth.id, time:new Date().getTime(), rewardId:rewardId},
       this.headers
     )
   }
 //  post & put in same function
-  postReward(method,r_id,name,price,stock){
+  postReward(method,rewardId,name,price,stock){
     if (method==='add'){
       return this.http.post(
-        'http://localhost:8080/rewards',
-        {r_id:r_id,name:name,price:price,stock:stock});
+        'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards',
+        {rewardId:rewardId,name:name,price:price,stock:stock});
     } else {
       return this.http.put(
-      'http://localhost:8080/rewards/'+r_id,
-      {r_id:r_id,name:name,price:price,stock:stock},
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards/'+rewardId,
+      {rewardId:rewardId,name:name,price:price,stock:stock},
       this.headers);
     }
   }
-  deleteReward(r_id){
+  deleteReward(rewardId){
     return this.http.delete(
-      'http://localhost:8080/purchases',
+      'http://ec2-52-14-160-173.us-east-2.compute.amazonaws.com:8081/rewards/'+rewardId,
       this.headers)
   }
 }

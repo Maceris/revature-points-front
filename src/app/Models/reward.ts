@@ -1,12 +1,12 @@
 export class Reward {
     
-    r_id: number;
+    rewardId: number;
     name: string;
     price: number;
     stock: number;
 
-    constructor(r_id:number, name:string, price:number, stock:number) {
-        this.r_id = r_id;
+    constructor(rewardId:number, name:string, price:number, stock:number) {
+        this.rewardId = rewardId;
         this.name = name;
         this.price = price;
         this.stock = stock;

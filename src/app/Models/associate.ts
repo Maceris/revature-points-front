@@ -2,21 +2,21 @@ import { Trainer } from './trainer';
 
 export class Associate {
 
-    a_id: number;
+    associateId: number;
     username: string;
     password: string;
     balance: number;
-    f_name: string;
-    l_name: string;
-    trainer: Trainer;
+    fname: string;
+    lname: string;
+    trainerId: number;
 
-    constructor(a_id: number, username: string, password: string, balance: number, f_name: string, l_name: string, trainer: Trainer) {
-       this.a_id = a_id;
+    constructor(associateId: number, username: string, password: string, balance: number, fname: string, lname: string, trainerId: number) {
+       this.associateId = associateId;
        this.username = username;
        this.password = password;
        this.balance = balance;
-       this.f_name = f_name;
-       this.l_name = l_name;
-       this.trainer = trainer;
+       this.fname = fname;
+       this.lname = lname;
+       this.trainerId = trainerId;
     }
 }
